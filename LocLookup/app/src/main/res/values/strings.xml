@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">LocLookup</string>
+    <string name="msg.welcome">Welcome to LocLookup</string>
+    <string name="toast.location_outside">Your location is outside assigned area!</string>
+    <string name="toast.permission_denied">Permission denied! We need location permission to continue.</string>
+    <string name="toast.unauthorized_app">Your app is not authorized to call this tool!</string>
+    <string name="toast.unrecognized_share_file">Shape file is not recognized!</string>
+    <string name="toast.gps_needed">Gps is needed to get your location</string>
+    <string name="msg.enable_gps">Your GPS seems to be disabled, do you want to enable it?</string>
+</resources>
