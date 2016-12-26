@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="font" format="enum">
+        <enum name="ARABIA_REGULAR" value="0" />
+    </attr>
+
+    <declare-styleable name="CustomTextView">
+        <attr name="font" />
+    </declare-styleable>
+</resources>

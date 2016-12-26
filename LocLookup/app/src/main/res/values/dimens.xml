@@ -1,0 +1,37 @@
+<resources>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="dialog_side">240dp</dimen>
+    <dimen name="progress_radius">60dp</dimen>
+    <dimen name="progress_stroke">5dp</dimen>
+    <dimen name="icon_side">30dp</dimen>
+
+    <!-- font sizes -->
+    <dimen name="font_tiny">9dp</dimen>
+    <dimen name="font_small">11dp</dimen>
+    <dimen name="font_small_plus">13dp</dimen>
+    <dimen name="font_medium">15dp</dimen>
+    <dimen name="font_medium_plus">17dp</dimen>
+    <dimen name="font_large">19dp</dimen>
+    <dimen name="font_large_plus">21dp</dimen>
+    <dimen name="font_large_plus_plus">30dp</dimen>
+    <dimen name="font_league">12.5dp</dimen>
+    <dimen name="font_team">11.5dp</dimen>
+
+    <!-- margins -->
+    <dimen name="margin0">0dp</dimen>
+    <dimen name="margin1">1dp</dimen>
+    <dimen name="margin2">2dp</dimen>
+    <dimen name="margin3">3dp</dimen>
+    <dimen name="margin4">4dp</dimen>
+    <dimen name="margin6">6dp</dimen>
+    <dimen name="margin8">8dp</dimen>
+    <dimen name="margin10">10dp</dimen>
+    <dimen name="margin12">12dp</dimen>
+    <dimen name="margin14">14dp</dimen>
+    <dimen name="margin16">16dp</dimen>
+    <dimen name="margin18">18dp</dimen>
+    <dimen name="margin20">20dp</dimen>
+    <dimen name="margin30">30dp</dimen>
+    <dimen name="margin40">40dp</dimen>
+</resources>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.openDC.loclookup.view.custom.CustomTextView
+            android:id="@+id/txt_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorDialogLight"
+            android:clickable="true"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/margin16"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/font_large"
+            android:textStyle="bold" />
+
+        <com.openDC.loclookup.view.custom.CustomEditText
+            android:id="@+id/etxt_map_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:hint="@string/hint.map_name"
+            android:padding="@dimen/margin10"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:textSize="@dimen/font_medium" />
+
+        <include layout="@layout/layout_footer" />
+    </LinearLayout>
+</RelativeLayout>

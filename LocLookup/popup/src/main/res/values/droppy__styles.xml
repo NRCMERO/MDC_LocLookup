@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.DroppyDefaults" parent="android:Theme">
+        <item name="droppyPopupStyle">@style/Droppy.DroppyPopup</item>
+        <item name="droppyMenuStyle">@style/Droppy.DroppyMenu</item>
+        <item name="droppyMenuItemStyle">@style/Droppy.DroppyMenuItem</item>
+        <item name="droppyMenuSeparatorStyle">@style/Droppy.DroppyMenuSeparator</item>
+        <item name="droppyMenuItemTitleStyle">@style/Droppy.DroppyMenuItemTitle</item>
+        <item name="droppyMenuItemIconStyle">@style/Droppy.DroppyMenuItemIcon</item>
+    </style>
+
+    <style name="Droppy">
+    </style>
+
+    <style name="Droppy.DroppyPopup">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bt_bg_popupmenu</item>
+    </style>
+
+    <style name="Droppy.DroppyMenu">
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Droppy.DroppyMenuSeparator">
+        <item name="android:background">#DDDDDD</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="Droppy.DroppyMenuItem">
+        <item name="android:minWidth">120dp</item>
+        <item name="android:minHeight">30dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:clickable">true</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:background">@drawable/droppy_list_item_selector</item>
+    </style>
+
+    <style name="Droppy.DroppyMenuItemIcon">
+        <item name="android:maxWidth">32dp</item>
+        <item name="android:maxHeight">32dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_gravity">start|center_vertical</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+    </style>
+
+    <style name="Droppy.DroppyMenuItemTitle">
+        <item name="android:textColor">@color/droppy_title_color</item>
+        <item name="android:minWidth">128dp</item>
+        <item name="android:minHeight">30dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_gravity">end|center_vertical</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+</resources>

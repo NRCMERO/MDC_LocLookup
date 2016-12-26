@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:enabled="true">
+        <item
+            android:id="@+id/popup_edit_fields"
+            android:icon="@drawable/ic_edit_fields"
+            android:title="@string/popup.edit_fields" />
+
+        <item
+            android:id="@+id/popup_edit_name"
+            android:icon="@drawable/ic_edit_name"
+            android:title="@string/popup.edit_name" />
+
+        <item
+            android:id="@+id/popup_remove"
+            android:icon="@drawable/ic_delete"
+            android:title="@string/popup.delete_map" />
+    </group>
+</menu>

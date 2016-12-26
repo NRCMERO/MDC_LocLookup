@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="@dimen/dialog_side"
+        android:layout_height="@dimen/dialog_side"
+        android:layout_centerInParent="true">
+
+        <com.pnikosis.materialishprogress.ProgressWheel
+            android:id="@+id/progress_wheel"
+            android:layout_width="@dimen/progress_radius"
+            android:layout_height="@dimen/progress_radius"
+            android:layout_centerInParent="true"
+            app:matProg_barColor="@color/colorPrimary"
+            app:matProg_barWidth="@dimen/progress_stroke"
+            app:matProg_circleRadius="@dimen/progress_radius"
+            app:matProg_progressIndeterminate="true"
+            app:matProg_rimColor="@color/colorPrimaryTrans"
+            app:matProg_rimWidth="@dimen/progress_stroke" />
+    </RelativeLayout>
+</RelativeLayout>
