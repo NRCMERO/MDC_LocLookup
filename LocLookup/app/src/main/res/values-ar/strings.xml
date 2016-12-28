@@ -1,0 +1,25 @@
+<resources>
+    <string name="toast.location_outside">موقعك خارج المنطقة التي اخترتها من خلال التطبيق</string>
+    <string name="toast.permission_denied">لم يتم منح الصلاحية! هذا التطبيق يحتاج إلى صلاحية تحديد موقعك ليتمكن من العمل</string>
+    <string name="toast.unauthorized_app">التطبيق الذي تستخدمه غير مصرح له استخدام هذه الأداة</string>
+    <string name="toast.unrecognized_share_file">حدث خطأ أثناء التعرف على ملفات الخرائط</string>
+    <string name="toast.gps_needed">عليك تفعيل الـ GPS لنتمكن من الحصول على موقعك</string>
+    <string name="toast.no_map">لم تقم باختيار أية خارطة</string>
+    <string name="toast_map_added">تم إضافة الخارطة بنجاح</string>
+    <string name="toast.empty_map_name">عليك تعبئة اسم الخارطة</string>
+    <string name="toast.must_select_field">عليك أن تختار حقلاً واحداً على الأقل</string>
+
+    <string name="toast.zip_file_not_found">الملف غير موجود!</string>
+    <string name="toast.zip_file_missing_files">بعض الملفات غير موجودة! يجب أن تتوفر الامتدادات *.shp, *.shx, *.dbf</string>
+    <string name="toast.zip_file_duplicate_files">الملف الذي قمت باختياره يحتوي على أكثر من ملف بنفس الامتداد</string>
+
+    <string name="msg.enable_gps">يبدو أن الـ GPS لديك معطل. هل تود تشغيله؟</string>
+    <string name="hint.map_name">اسم الخارطة</string>
+    <string name="title.edit_map_name">تعديل اسم الخارطة</string>
+    <string name="title.enter_map_name">أدخل اسم الخارطة</string>
+    <string name="title.choose_fields">اختيار الحقول</string>
+
+    <string name="popup.edit_fields">تعديل الحقول</string>
+    <string name="popup.edit_name">تعديل الاسم</string>
+    <string name="popup.delete_map">حذف</string>
+</resources>

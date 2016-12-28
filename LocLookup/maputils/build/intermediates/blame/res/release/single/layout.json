@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/maputils/build/intermediates/res/merged/release/layout/amu_webview.xml",
+        "source": "/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/maputils/src/main/res/layout/amu_webview.xml"
+    },
+    {
+        "merged": "/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/maputils/build/intermediates/res/merged/release/layout/amu_info_window.xml",
+        "source": "/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/maputils/src/main/res/layout/amu_info_window.xml"
+    },
+    {
+        "merged": "/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/maputils/build/intermediates/res/merged/release/layout/amu_text_bubble.xml",
+        "source": "/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/maputils/src/main/res/layout/amu_text_bubble.xml"
+    }
+]

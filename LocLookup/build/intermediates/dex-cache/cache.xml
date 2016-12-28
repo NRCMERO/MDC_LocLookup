@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="27777b3cad3c20b1acab19f6e37fe3e03371bf6e">
+        <dex dex="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-maps-10.0.1_8f8c7d901e515bce96f89626281d5636d7b588c9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
+        <dex dex="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-25.1.0_03176c576c0f851c7df514ca4e464c5daf0873d2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
+        <dex dex="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.1.0_39675031320aed497fdd50f378275cb93529ae73/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
+        <dex dex="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.1.0_67def8c4f7de45347749edd2793582e7d9f0d0e1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.1.0_f6281e2ddd109c7105444b86e1cc6b0b543fa64b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
+        <dex dex="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.1.0_145580fba5a2524452f43c9a531aaaab880c175e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b266c8faa5af72e579b9da36ef35053ffed6ac64">
+        <dex dex="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-25.1.0_c1aa3f2d3395825f8bf4c0861b12ebe1e4400c20/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="25438f55fc6d906a0e72f30b21487541430ede43">
+        <dex dex="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-base-10.0.1_b99f4f7c6163adaef4a034d7e388d4dabae64415/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
+        <dex dex="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.1.0_c0606cb461e32cb8e68655b371713bb13260bff2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="204cb0c2a9fcd61e777f8406a47e2c83709d3426">
+        <dex dex="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_2ffc2f71ebd3e736723d30740f2a27e419a8e0e0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f88f04807ae12a8bee456cb5ae3f36c8b4670418">
+        <dex dex="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_1c0397db89c2fa373a0fc32db068279004748cc3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
+        <dex dex="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.1.0_fb4d8d278cde07c8c5567d68a08b61ef4c7ba052/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/exploded-aar/com.android.support/design/24.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8620c018c108eed501bbdb85324b79136373ea44">
+        <dex dex="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-24.1.0_198ed45b1afa53369afaecae5a035bb48826db2b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/exploded-aar/com.pnikosis/materialish-progress/1.7/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="41a4edf3c43fdbce6eba27da50b17ff9933987f1">
+        <dex dex="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.pnikosis-materialish-progress-1.7_fca8fcb5f62e52fa13de53a31697c116ba843692/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/exploded-aar/com.nbsp/library/1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7815eae61f9359cf3ca861b35185557eee6494bf">
+        <dex dex="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.nbsp-library-1.1_b704b530905afd7c4192a2c5ed442d7c1e46c3ad/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="756f6297eef79784f5e356dcd4f39865028b2bd0">
+        <dex dex="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-10.0.1_90b3ef1e50c87ee940fbdb25cdb29f9182426450/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hamzeh/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.1.0/support-annotations-25.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
+        <dex dex="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.1.0_9b953bac1924f85dbd17d3aa71810070900b3a23/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="aee64634871d88a419d59eb743c1258a60f19700">
+        <dex dex="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.1.0_18133b99de172d208f2165d992e74228351ad727/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
+        <dex dex="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.1.0_58c521930f0764405a2b9f2d771985e3ade0a639/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6addaba208e21c6da776d0ca75b6b23a6ccd5499">
+        <dex dex="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tasks-10.0.1_67dbe58fa623002bb23fb17632da417603dd3fe2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="44a694d4095be84c2888764b1f7256b385c030ad">
+        <dex dex="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-location-10.0.1_c1db8f6a2ecbd8e278e71e572c1957fad03626bb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/libs/shape_files_reader.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="342299f392cec6bab945f099d426657c81ff85fd">
+        <dex dex="/Users/hamzeh/Documents/MDC_LocLookup/MDC_LocLookup/LocLookup/app/build/intermediates/transforms/dex/debug/folders/1000/2/shape_files_reader_59a8afdc68ead5b4a3b7a784552201d9f2b6bc1c/classes.dex" />
+    </item>
+
+</items>
