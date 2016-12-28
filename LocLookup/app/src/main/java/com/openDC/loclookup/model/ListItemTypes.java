@@ -5,8 +5,8 @@ import android.util.SparseArray;
 import com.openDC.loclookup.view.viewholders.FieldViewHolder;
 import com.openDC.loclookup.view.viewholders.MapViewHolder;
 
-import org.zakariya.stickyheaders.BasicViewHolder;
-import org.zakariya.stickyheaders.ListItemType;
+import com.listable.BasicViewHolder;
+import com.listable.ListItemType;
 
 import loclookup.opendc.com.loclookup.R;
 
@@ -25,7 +25,7 @@ public class ListItemTypes {
     static {
         sTypeItemMap    = new SparseArray<>();
         NONE            = new ListItemType(  BasicViewHolder.class,    0,                             sTypeItemMap);
-        MAP_ITEM        = new ListItemType(  MapViewHolder.class,      R.layout.item_choice_ripple,   sTypeItemMap);
+        MAP_ITEM        = new ListItemType(  MapViewHolder.class,      R.layout.item_choice,   sTypeItemMap);
         FIELD           = new ListItemType(  FieldViewHolder.class,    R.layout.item_field,           sTypeItemMap);
     }
     // @formatter:on

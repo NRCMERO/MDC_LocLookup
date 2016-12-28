@@ -8,9 +8,9 @@ import android.widget.TextView;
 
 import com.openDC.loclookup.model.vo.MapItem;
 
-import org.zakariya.stickyheaders.BasicViewHolder;
-import org.zakariya.stickyheaders.ListItem;
-import org.zakariya.stickyheaders.OnItemClickListener;
+import com.listable.BasicViewHolder;
+import com.listable.ListItem;
+import com.listable.OnItemClickListener;
 
 import loclookup.opendc.com.loclookup.R;
 

@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:animateLayoutChanges="true"
-    android:gravity="center_vertical"
-    android:orientation="horizontal"
-    android:paddingBottom="@dimen/margin8"
-    android:paddingLeft="@dimen/margin16"
-    android:paddingRight="@dimen/margin16"
-    android:paddingTop="@dimen/margin8">
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:animateLayoutChanges="true"
+              android:gravity="center_vertical"
+              android:orientation="horizontal"
+              android:paddingBottom="@dimen/margin8"
+              android:paddingLeft="@dimen/margin16"
+              android:paddingRight="@dimen/margin16"
+              android:paddingTop="@dimen/margin8">
 
     <ImageView
         android:id="@+id/img_icon"
         android:layout_width="@dimen/margin30"
         android:layout_height="@dimen/margin30"
-        android:layout_marginRight="@dimen/margin10"
-        android:src="@drawable/ic_tick" />
+        android:layout_marginEnd="@dimen/margin10"
+        android:src="@drawable/ic_tick"/>
 
     <com.openDC.loclookup.view.custom.CustomTextView
         android:id="@+id/txt_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="left"
+        android:gravity="start"
         android:paddingBottom="@dimen/margin6"
         android:paddingTop="@dimen/margin6"
         android:textColor="@android:color/black"
-        android:textSize="@dimen/font_medium_plus" />
+        android:textSize="@dimen/font_medium_plus"/>
 </LinearLayout>

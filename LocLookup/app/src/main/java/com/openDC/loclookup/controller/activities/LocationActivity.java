@@ -23,7 +23,6 @@ import com.openDC.loclookup.controller.utils.LocationUtils;
 import com.openDC.loclookup.controller.utils.ShapeFileUtils;
 import com.openDC.loclookup.model.AppPrefs;
 import com.openDC.loclookup.model.ModelUtils;
-import com.openDC.loclookup.model.shape_files.shapeFile.ShapeFile;
 import com.openDC.loclookup.view.dialogs.Dialogs;
 import com.openDC.loclookup.view.dialogs.FieldsDialog;
 
@@ -31,6 +30,7 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
+import diewald_shapeFile.shapeFile.ShapeFile;
 import loclookup.opendc.com.loclookup.R;
 
 public class LocationActivity extends AppCompatActivity implements

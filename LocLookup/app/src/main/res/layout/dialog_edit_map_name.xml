@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clipChildren="false"
-    android:clipToPadding="false">
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:clipToPadding="false">
 
     <LinearLayout
         android:id="@+id/main"
@@ -26,7 +26,7 @@
             android:padding="@dimen/margin16"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/font_large"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
         <com.openDC.loclookup.view.custom.CustomEditText
             android:id="@+id/etxt_map_name"
@@ -37,8 +37,8 @@
             android:padding="@dimen/margin10"
             android:selectAllOnFocus="true"
             android:singleLine="true"
-            android:textSize="@dimen/font_medium" />
+            android:textSize="@dimen/font_medium"/>
 
-        <include layout="@layout/layout_footer" />
+        <include layout="@layout/layout_footer"/>
     </LinearLayout>
 </RelativeLayout>

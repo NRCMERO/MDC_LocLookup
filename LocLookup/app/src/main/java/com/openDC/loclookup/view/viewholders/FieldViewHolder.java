@@ -6,9 +6,9 @@ import android.widget.TextView;
 
 import com.openDC.loclookup.model.vo.FieldItem;
 
-import org.zakariya.stickyheaders.BasicViewHolder;
-import org.zakariya.stickyheaders.ListItem;
-import org.zakariya.stickyheaders.OnItemClickListener;
+import com.listable.BasicViewHolder;
+import com.listable.ListItem;
+import com.listable.OnItemClickListener;
 
 import loclookup.opendc.com.loclookup.R;
 
@@ -31,6 +31,6 @@ public class FieldViewHolder extends BasicViewHolder {
         FieldItem map = (FieldItem) listable;
         fieldNameTextView.setText(map.fieldName);
         fieldValueTextView.setText(map.fieldValue);
-        tickImageView.setAlpha(map.isChecked ? 1.0f : 0.2f);
+        tickImageView.setAlpha(map.isChecked ? 1.0f : 0.1f);
     }
 }

@@ -2,7 +2,7 @@ package com.openDC.loclookup.model.vo;
 
 import com.openDC.loclookup.model.ListItemTypes;
 
-import org.zakariya.stickyheaders.ListItem;
+import com.listable.ListItem;
 
 public class MapItem extends ListItem {
     public String mapName;

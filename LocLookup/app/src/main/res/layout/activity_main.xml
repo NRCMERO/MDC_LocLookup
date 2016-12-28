@@ -1,47 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/activity_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_height="match_parent"/>
 
-    <LinearLayout
+    <com.openDC.loclookup.view.custom.CustomTextView
+        android:id="@+id/txt_welcome"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="@dimen/margin12">
-
-        <com.openDC.loclookup.view.custom.CustomEditText
-            android:id="@+id/etxt_map_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/margin16"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_etxt"
-            android:hint="@string/hint.map_name"
-            android:padding="@dimen/margin10"
-            android:singleLine="true"
-            android:textSize="@dimen/font_medium" />
-
-        <ImageView
-            android:id="@+id/img_attach"
-            android:layout_width="@dimen/icon_side"
-            android:layout_height="@dimen/icon_side"
-            android:layout_marginRight="@dimen/margin16"
-            android:src="@drawable/ic_attach_file" />
-
-        <ImageView
-            android:id="@+id/img_add"
-            android:layout_width="@dimen/icon_side"
-            android:layout_height="@dimen/icon_side"
-            android:src="@drawable/ic_add" />
-    </LinearLayout>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:padding="@dimen/margin16"
+        android:text="@string/welcome"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/font_large"
+        android:textStyle="bold"
+        android:visibility="gone"/>
+</FrameLayout>

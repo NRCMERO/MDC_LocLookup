@@ -5,8 +5,6 @@ import android.content.res.AssetManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.openDC.loclookup.model.shape_files.files.dbf.DBF_Field;
-import com.openDC.loclookup.model.shape_files.shapeFile.ShapeFile;
 import com.openDC.loclookup.model.vo.FieldItem;
 
 import java.io.File;
@@ -20,6 +18,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+
+import diewald_shapeFile.files.dbf.DBF_Field;
+import diewald_shapeFile.shapeFile.ShapeFile;
 
 public class ModelUtils {
     private static final String TAG = ModelUtils.class.getSimpleName();

@@ -14,11 +14,13 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.listable.ListItem;
+import com.listable.OnItemClickListener;
 import com.nbsp.materialfilepicker.MaterialFilePicker;
 import com.nbsp.materialfilepicker.ui.FilePickerActivity;
 import com.openDC.loclookup.model.AppPrefs;
@@ -29,16 +31,12 @@ import com.openDC.loclookup.model.vo.MapItem;
 import com.openDC.loclookup.model.vo.MapPopupItem;
 import com.openDC.loclookup.view.EasyAdapter;
 import com.openDC.loclookup.view.FontUtils;
-import com.openDC.loclookup.view.ViewUtils;
 import com.openDC.loclookup.view.custom.DroppyMapMenuItem;
 import com.openDC.loclookup.view.dialogs.EditMapNameDialog;
 import com.openDC.loclookup.view.dialogs.FieldsDialog;
 import com.shehabic.droppy.DroppyClickCallbackInterface;
 import com.shehabic.droppy.DroppyMenuPopup;
 import com.shehabic.droppy.animations.DroppyScaleAnimation;
-
-import org.zakariya.stickyheaders.ListItem;
-import org.zakariya.stickyheaders.OnItemClickListener;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -48,17 +46,13 @@ import java.util.regex.Pattern;
 import loclookup.opendc.com.loclookup.R;
 
 public class MainActivity extends AppCompatActivity
-        implements View.OnClickListener,
-        OnItemClickListener.OnItemClickCallback,
+        implements OnItemClickListener.OnItemClickCallback,
         DroppyClickCallbackInterface {
     public static final String TAG = MainActivity.class.getSimpleName();
     public static final int STORAGE_PERMISSION_REQUEST_CODE = 0;
     public static final int FILE_BROWSER_REQUEST_CODE = 1;
 
     private Context mContext = this;
-    private EditText mapNameEditText;
-    private ImageView attachImageView;
-    private ImageView addImageView;
     private String selectedFilePath;
     private EasyAdapter mapsAdapter;
     private FieldsDialog fieldsDialog;
@@ -69,18 +63,23 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setActionbarTitle(R.string.app_name);
-        setupView();
+        prepareMapsRecyclerView();
     }
 
-    private void setupView() {
-        mapNameEditText = (EditText) findViewById(R.id.etxt_map_name);
-        attachImageView = (ImageView) findViewById(R.id.img_attach);
-        addImageView = (ImageView) findViewById(R.id.img_add);
-        attachImageView.setOnClickListener(this);
-        addImageView.setOnClickListener(this);
-        addImageView.setEnabled(false);
-        addImageView.setAlpha(0.5f);
-        prepareMapsRecyclerView();
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.add) {
+            if (checkStoragePermission()) {
+                openFileBrowser();
+            }
+        }
+        return true;
     }
 
     private void prepareMapsRecyclerView() {
@@ -114,37 +113,25 @@ public class MainActivity extends AppCompatActivity
             mapsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
             AppPrefs.setMap(mContext, availableMaps.get(selectedIndex));
         }
+        refreshWelcomeMessage();
     }
 
-    @Override
-    public void onClick(View v) {
-        if (v.getId() == R.id.img_attach) {
-            if (checkStoragePermission()) {
-                openFileBrowser();
-            }
-        } else if (v.getId() == R.id.img_add) {
-            ViewUtils.hideKeyboard(mapNameEditText);
-            if (selectedFilePath == null || selectedFilePath.isEmpty() ||
-                    mapNameEditText.getText().toString().isEmpty()) {
-                return;
-            }
-            File mapsDir = getExternalFilesDir(ModelUtils.DIR_MAPS);
-            if (mapsDir == null) {
-                return;
-            }
-            String mapName = mapNameEditText.getText().toString();
-            int preCount = ModelUtils.getAvailableMaps(mContext).size();
-            ExtractionUtils.extract(selectedFilePath, mapsDir.getPath(), mapName);
-            int postCount = ModelUtils.getAvailableMaps(mContext).size();
-            if (postCount > preCount) {
-                AppPrefs.setMap(mContext, mapName);
-                showFieldsDialog(mapName);
-                mapNameEditText.setText("");
-                addImageView.setEnabled(false);
-                addImageView.setAlpha(0.5f);
-                Toast.makeText(mContext, R.string.toast_map_added, Toast.LENGTH_LONG).show();
-                prepareMapsRecyclerView();
-            }
+    private void extract(String mapName) {
+        if (selectedFilePath == null || selectedFilePath.isEmpty()) {
+            return;
+        }
+        File mapsDir = getExternalFilesDir(ModelUtils.DIR_MAPS);
+        if (mapsDir == null) {
+            return;
+        }
+        int preCount = ModelUtils.getAvailableMaps(mContext).size();
+        ExtractionUtils.extract(selectedFilePath, mapsDir.getPath(), mapName);
+        int postCount = ModelUtils.getAvailableMaps(mContext).size();
+        if (postCount > preCount) {
+            AppPrefs.setMap(mContext, mapName);
+            showFieldsDialog(mapName);
+            Toast.makeText(mContext, R.string.toast_map_added, Toast.LENGTH_LONG).show();
+            prepareMapsRecyclerView();
         }
     }
 
@@ -163,11 +150,50 @@ public class MainActivity extends AppCompatActivity
             String filePath = data.getStringExtra(FilePickerActivity.RESULT_FILE_PATH);
             if (filePath.endsWith(".zip")) {
                 selectedFilePath = filePath;
-                addImageView.setEnabled(true);
-                addImageView.setAlpha(1.0f);
-                mapNameEditText.setText(StringUtils.getBaseName(filePath));
+                int filesResultCode = ExtractionUtils.validate(selectedFilePath);
+                switch (filesResultCode) {
+                    case ExtractionUtils.RESULT_OK: {
+                        showNameSettingDialog(StringUtils.getBaseName(filePath));
+                        break;
+                    }
+                    case ExtractionUtils.RESULT_FILE_NOT_EXIST: {
+                        Toast.makeText(mContext, R.string.toast_zip_file_not_found, Toast.LENGTH_LONG).show();
+                        break;
+                    }
+                    case ExtractionUtils.RESULT_MISSING_FILES: {
+                        Toast.makeText(mContext, R.string.toast_zip_file_missing_files, Toast.LENGTH_LONG).show();
+                        break;
+                    }
+                    case ExtractionUtils.RESULT_TOO_MANY_FILES: {
+                        Toast.makeText(mContext, R.string.toast_zip_file_duplicate_files, Toast.LENGTH_LONG).show();
+                        break;
+                    }
+                }
             }
         }
+    }
+
+    private void showNameSettingDialog(String initialName) {
+        editMapNameDialog = new EditMapNameDialog(mContext, new View.OnClickListener() {
+            public void onClick(View v) {
+                if (v.getId() == R.id.btn_negative) {
+                    editMapNameDialog.dismiss();
+                } else if (v.getId() == R.id.btn_positive) {
+                    String newName = v.getTag().toString();
+                    if (newName.trim().isEmpty()) {
+                        Toast.makeText(mContext, R.string.toast_empty_map_name, Toast.LENGTH_LONG).show();
+                    } else {
+                        editMapNameDialog.dismiss();
+                        extract(newName);
+                    }
+                }
+            }
+        });
+        editMapNameDialog.draw(initialName,
+                R.string.title_enter_map_name,
+                android.R.string.ok,
+                android.R.string.cancel);
+        editMapNameDialog.show();
     }
 
     @Override
@@ -215,7 +241,7 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         }
-        mapsAdapter.notifyAllSectionsDataSetChanged();
+        mapsAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -275,6 +301,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             }
             case DroppyMapMenuItem.ID_DELETE_MAP: {
+                AppPrefs.setFields(mContext, popupMapItem.mapName, null);
                 ModelUtils.deleteMap(mContext, popupMapItem.mapName);
                 prepareMapsRecyclerView();
                 Log.i("Pop", "ID_DELETE_MAP " + popupMapItem.mapName);
@@ -290,11 +317,14 @@ public class MainActivity extends AppCompatActivity
                     editMapNameDialog.dismiss();
                 } else if (v.getId() == R.id.btn_positive) {
                     editMapNameDialog.dismiss();
+                    String oldName = popupMapItem.mapName;
                     String newName = v.getTag().toString();
-                    AppPrefs.setFields(mContext, newName, AppPrefs.getFields(mContext, popupMapItem.mapName));
+                    String currentFields = AppPrefs.getFields(mContext, oldName);
+                    AppPrefs.setFields(mContext, newName, currentFields);
+                    AppPrefs.setFields(mContext, oldName, null);
                     boolean isChecked = AppPrefs.getMap(mContext) != null &&
-                            AppPrefs.getMap(mContext).equals(popupMapItem.mapName);
-                    ModelUtils.renameMap(mContext, popupMapItem.mapName, newName);
+                            AppPrefs.getMap(mContext).equals(oldName);
+                    ModelUtils.renameMap(mContext, oldName, newName);
                     if (isChecked) {
                         AppPrefs.setMap(mContext, newName);
                     }
@@ -344,5 +374,11 @@ public class MainActivity extends AppCompatActivity
                     Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             getSupportActionBar().setTitle(spannableString);
         }
+    }
+
+    private void refreshWelcomeMessage() {
+        findViewById(R.id.txt_welcome).setVisibility(mapsAdapter == null || mapsAdapter.empty()
+                ? View.VISIBLE
+                : View.GONE);
     }
 }

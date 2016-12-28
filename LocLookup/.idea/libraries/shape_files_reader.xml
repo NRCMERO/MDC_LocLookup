@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="shape_files_reader">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/shape_files_reader.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

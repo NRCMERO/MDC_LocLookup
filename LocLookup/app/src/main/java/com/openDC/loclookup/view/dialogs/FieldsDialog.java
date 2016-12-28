@@ -15,8 +15,8 @@ import com.openDC.loclookup.view.EasyAdapter;
 import com.openDC.loclookup.view.SimpleDividerItemDecoration;
 import com.openDC.loclookup.view.custom.CustomTextView;
 
-import org.zakariya.stickyheaders.ListItem;
-import org.zakariya.stickyheaders.OnItemClickListener;
+import com.listable.ListItem;
+import com.listable.OnItemClickListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -107,7 +107,7 @@ public class FieldsDialog extends android.support.v7.app.AlertDialog implements
                     public void onItemClicked(View view, ListItem listableItem, int position) {
                         FieldItem field = (FieldItem) listableItem;
                         field.isChecked = !field.isChecked;
-                        easyAdapter.notifyAllSectionsDataSetChanged();
+                        easyAdapter.notifyDataSetChanged();
                     }
 
                     @Override

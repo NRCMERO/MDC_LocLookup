@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:animateLayoutChanges="true"
     android:gravity="center_vertical"
     android:orientation="horizontal"
     android:padding="@dimen/margin16">
@@ -13,16 +13,16 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="left"
+        android:gravity="start"
         android:paddingBottom="@dimen/margin6"
         android:paddingTop="@dimen/margin6"
         android:textColor="@android:color/black"
-        android:textSize="@dimen/font_large" />
+        android:textSize="@dimen/font_large"/>
 
     <ImageView
         android:id="@+id/img_tick"
         android:layout_width="@dimen/margin30"
         android:layout_height="@dimen/margin30"
-        android:layout_marginLeft="@dimen/margin10"
-        android:src="@drawable/ic_tick" />
+        android:layout_marginStart="@dimen/margin10"
+        android:src="@drawable/ic_tick"/>
 </LinearLayout>

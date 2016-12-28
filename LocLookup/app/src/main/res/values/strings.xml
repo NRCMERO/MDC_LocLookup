@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">LocLookup</string>
+    <string name="app_name">MDC LocLookup</string>
+    <string name="welcome">Welcome to MDC Location Look Up. This application works with your mobile data capture application. It will look up the name of the area where you are and return the name of that location to the mobile data capture application.</string>
 
-    <string name="toast.location_outside">Your location is outside assigned area!</string>
-    <string name="toast.permission_denied">Permission denied! We need location permission to continue.</string>
+    <string name="toast.location_outside">Your location is outside assigned area that you\'ve chosen through the app!</string>
+    <string name="toast.permission_denied">Permission denied! This app needs your location permission to continue.</string>
     <string name="toast.unauthorized_app">Your app is not authorized to call this tool!</string>
     <string name="toast.unrecognized_share_file">Shape file is not recognized!</string>
     <string name="toast.gps_needed">Gps is needed to get your location</string>
@@ -11,12 +12,19 @@
     <string name="toast.empty_map_name">Map name can\'t be empty</string>
     <string name="toast.must_select_field">You must select at least one field</string>
 
+    <string name="toast.zip_file_not_found">File not found!</string>
+    <string name="toast.zip_file_missing_files">Some files are missing! Must contain *.shp, *.shx, and *.dbf</string>
+    <string name="toast.zip_file_duplicate_files">The selected file contains multiple files of the same extension</string>
+
     <string name="msg.enable_gps">Your GPS seems to be disabled, do you want to enable it?</string>
     <string name="hint.map_name">Map name</string>
     <string name="title.edit_map_name">Edit Map Name</string>
+    <string name="title.enter_map_name">Enter Map Name</string>
     <string name="title.choose_fields">Choose Fields</string>
 
     <string name="popup.edit_fields">Edit Fields</string>
     <string name="popup.edit_name">Edit Name</string>
-    <string name="popup.delete_map">Delete Map</string>
+    <string name="popup.delete_map">Delete</string>
+
+    <string name="menu.add">Add</string>
 </resources>

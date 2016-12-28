@@ -5,12 +5,13 @@ import android.location.Location;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.maps.android.PolyUtil;
-import com.openDC.loclookup.model.shape_files.files.shp.shapeTypes.ShpPolygon;
-import com.openDC.loclookup.model.shape_files.files.shp.shapeTypes.ShpShape;
-import com.openDC.loclookup.model.shape_files.shapeFile.ShapeFile;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import diewald_shapeFile.files.shp.shapeTypes.ShpPolygon;
+import diewald_shapeFile.files.shp.shapeTypes.ShpShape;
+import diewald_shapeFile.shapeFile.ShapeFile;
 
 public class ShapeFileUtils {
     /**

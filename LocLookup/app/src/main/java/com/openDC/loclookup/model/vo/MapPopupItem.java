@@ -1,6 +1,6 @@
 package com.openDC.loclookup.model.vo;
 
-import org.zakariya.stickyheaders.ListItem;
+import com.listable.ListItem;
 
 public class MapPopupItem extends ListItem {
     public String title;
