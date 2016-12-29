@@ -11,7 +11,7 @@ import android.view.View;
 
 import com.openDC.loclookup.model.AppPrefs;
 import com.openDC.loclookup.model.vo.FieldItem;
-import com.openDC.loclookup.view.EasyAdapter;
+import com.listable.EasyAdapter;
 import com.openDC.loclookup.view.SimpleDividerItemDecoration;
 import com.openDC.loclookup.view.custom.CustomTextView;
 

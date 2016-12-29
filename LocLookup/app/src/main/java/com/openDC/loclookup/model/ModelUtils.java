@@ -126,8 +126,10 @@ public class ModelUtils {
     }
 
     /**
-     * @param context
-     * @return
+     * Fetches available map names
+     *
+     * @param context the context that will be used to access external storage
+     * @return map names
      */
     public static List<String> getAvailableMaps(Context context) {
         List<String> fileNames = new ArrayList<>();
@@ -143,6 +145,12 @@ public class ModelUtils {
         return fileNames;
     }
 
+    /**
+     * Deletes map files
+     *
+     * @param context the context that will be used to access external storage
+     * @param mapName the name of the map to be deleted
+     */
     public static void deleteMap(Context context, String mapName) {
         File mapsDir = context.getExternalFilesDir(DIR_MAPS);
         if (mapsDir == null) {
@@ -152,6 +160,11 @@ public class ModelUtils {
         deleteDirectory(mapDir);
     }
 
+    /**
+     * Completely deleted the map directory with all sub-files
+     *
+     * @param file the directory to be deleted
+     */
     private static void deleteDirectory(File file) {
         if (file.exists()) {
             if (file.isDirectory()) {
@@ -169,8 +182,10 @@ public class ModelUtils {
     }
 
     /**
-     * @param mapDirectory
-     * @return
+     * Checks if the map is valid and all map files exist
+     *
+     * @param mapDirectory the map directory to check
+     * @return true if the map is valid and map files exist
      */
     private static boolean isValidMapDirectory(File mapDirectory) {
         if (!mapDirectory.isDirectory()) {
@@ -192,7 +207,9 @@ public class ModelUtils {
     }
 
     /**
-     * @param record
+     * Fixes area records' encoding
+     *
+     * @param record area records
      */
     public static void fixRecords(String[] record) {
         for (int i = 0; i < record.length; i++) {
@@ -206,9 +223,11 @@ public class ModelUtils {
     }
 
     /**
-     * @param selectedFieldKeys
-     * @param fields
-     * @param record
+     * Fetches the location address (fields values)
+     *
+     * @param selectedFieldKeys the fields selected by the user
+     * @param fields            the data available for that area
+     * @param record            the records of the area
      * @return
      */
     public static String getLocationName(List<String> selectedFieldKeys, DBF_Field[] fields, String[] record) {
@@ -228,9 +247,11 @@ public class ModelUtils {
     }
 
     /**
-     * @param context
-     * @param mapName
-     * @return
+     * Fetches field items for a random area
+     *
+     * @param context the context tht will be used to read map file
+     * @param mapName the name of the map to fetch its fields
+     * @return the field items of a random area in the given map
      */
     public static List<FieldItem> getFields(Context context, String mapName) {
         File mapsDir = context.getExternalFilesDir(ModelUtils.DIR_MAPS);
@@ -258,6 +279,15 @@ public class ModelUtils {
         return new ArrayList<>();
     }
 
+    /**
+     * Changes the name of the given map (oldName) to a new one
+     * All sub-files will be renamed to the new name as well
+     *
+     * @param context the context that will be needed to access external storage
+     * @param oldName the old map name
+     * @param newName the new map name
+     * @return true if renamed successfully
+     */
     public static boolean renameMap(Context context, String oldName, String newName) {
         File mapsDir = context.getExternalFilesDir(ModelUtils.DIR_MAPS);
         if (mapsDir == null) {

@@ -7,18 +7,16 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Spannable;
-import android.text.SpannableString;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.listable.EasyAdapter;
 import com.listable.ListItem;
 import com.listable.OnItemClickListener;
 import com.nbsp.materialfilepicker.MaterialFilePicker;
@@ -29,11 +27,8 @@ import com.openDC.loclookup.model.ModelUtils;
 import com.openDC.loclookup.model.StringUtils;
 import com.openDC.loclookup.model.vo.MapItem;
 import com.openDC.loclookup.model.vo.MapPopupItem;
-import com.openDC.loclookup.view.EasyAdapter;
-import com.openDC.loclookup.view.FontUtils;
 import com.openDC.loclookup.view.custom.DroppyMapMenuItem;
-import com.openDC.loclookup.view.dialogs.EditMapNameDialog;
-import com.openDC.loclookup.view.dialogs.FieldsDialog;
+import com.openDC.loclookup.view.dialogs.Dialogs;
 import com.shehabic.droppy.DroppyClickCallbackInterface;
 import com.shehabic.droppy.DroppyMenuPopup;
 import com.shehabic.droppy.animations.DroppyScaleAnimation;
@@ -45,8 +40,8 @@ import java.util.regex.Pattern;
 
 import loclookup.opendc.com.loclookup.R;
 
-public class MainActivity extends AppCompatActivity
-        implements OnItemClickListener.OnItemClickCallback,
+public class MainActivity extends BaseActivity implements
+        OnItemClickListener.OnItemClickCallback,
         DroppyClickCallbackInterface {
     public static final String TAG = MainActivity.class.getSimpleName();
     public static final int STORAGE_PERMISSION_REQUEST_CODE = 0;
@@ -55,8 +50,10 @@ public class MainActivity extends AppCompatActivity
     private Context mContext = this;
     private String selectedFilePath;
     private EasyAdapter mapsAdapter;
-    private FieldsDialog fieldsDialog;
     private RecyclerView mapsRecyclerView;
+    private Dialogs dialogs;
+    private DroppyMenuPopup droppyMenu;
+    private MapItem popupMapItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +61,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         setActionbarTitle(R.string.app_name);
         prepareMapsRecyclerView();
+        dialogs = new Dialogs(mContext);
     }
 
     @Override
@@ -82,6 +80,9 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * Prepares the list of maps to include all available and valid map folders
+     */
     private void prepareMapsRecyclerView() {
         if (mapsRecyclerView == null) {
             mapsRecyclerView = (RecyclerView) findViewById(R.id.rv);
@@ -116,6 +117,11 @@ public class MainActivity extends AppCompatActivity
         refreshWelcomeMessage();
     }
 
+    /**
+     * Extracts the picked file to maps directory
+     *
+     * @param mapName the name of the map to be extracted
+     */
     private void extract(String mapName) {
         if (selectedFilePath == null || selectedFilePath.isEmpty()) {
             return;
@@ -129,12 +135,15 @@ public class MainActivity extends AppCompatActivity
         int postCount = ModelUtils.getAvailableMaps(mContext).size();
         if (postCount > preCount) {
             AppPrefs.setMap(mContext, mapName);
-            showFieldsDialog(mapName);
+            dialogs.showFieldsDialog(mapName);
             Toast.makeText(mContext, R.string.toast_map_added, Toast.LENGTH_LONG).show();
             prepareMapsRecyclerView();
         }
     }
 
+    /**
+     * Opens file browser to pick a map file with .zip extension
+     */
     private void openFileBrowser() {
         new MaterialFilePicker()
                 .withActivity(this)
@@ -153,7 +162,12 @@ public class MainActivity extends AppCompatActivity
                 int filesResultCode = ExtractionUtils.validate(selectedFilePath);
                 switch (filesResultCode) {
                     case ExtractionUtils.RESULT_OK: {
-                        showNameSettingDialog(StringUtils.getBaseName(filePath));
+                        dialogs.showNameSettingDialog(StringUtils.getBaseName(filePath), new Dialogs.OnNameSetCallback() {
+                            @Override
+                            public void onNameSet(String newName) {
+                                extract(newName);
+                            }
+                        });
                         break;
                     }
                     case ExtractionUtils.RESULT_FILE_NOT_EXIST: {
@@ -171,29 +185,6 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         }
-    }
-
-    private void showNameSettingDialog(String initialName) {
-        editMapNameDialog = new EditMapNameDialog(mContext, new View.OnClickListener() {
-            public void onClick(View v) {
-                if (v.getId() == R.id.btn_negative) {
-                    editMapNameDialog.dismiss();
-                } else if (v.getId() == R.id.btn_positive) {
-                    String newName = v.getTag().toString();
-                    if (newName.trim().isEmpty()) {
-                        Toast.makeText(mContext, R.string.toast_empty_map_name, Toast.LENGTH_LONG).show();
-                    } else {
-                        editMapNameDialog.dismiss();
-                        extract(newName);
-                    }
-                }
-            }
-        });
-        editMapNameDialog.draw(initialName,
-                R.string.title_enter_map_name,
-                android.R.string.ok,
-                android.R.string.cancel);
-        editMapNameDialog.show();
     }
 
     @Override
@@ -246,19 +237,22 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onItemLongClicked(View view, ListItem listableItem, int position) {
-        initDroppyMenu(view, listableItem);
+        showPopup(view, listableItem);
     }
 
-    private DroppyMenuPopup droppyMenu;
-    private MapItem popupMapItem;
-
-    private void initDroppyMenu(View v, ListItem listableItem) {
+    /**
+     * Shows a pop-up menu under the clicked view
+     *
+     * @param view the view under which the menu will appear
+     * @param item the model of the clicked view
+     */
+    private void showPopup(View view, ListItem item) {
         if (droppyMenu != null) {
             droppyMenu.dismiss(false);
         }
-        this.popupMapItem = (MapItem) listableItem;
+        this.popupMapItem = (MapItem) item;
         Log.i(TAG, "Showing popup: " + popupMapItem.mapName);
-        DroppyMenuPopup.Builder droppyBuilder = new DroppyMenuPopup.Builder(this, v);
+        DroppyMenuPopup.Builder droppyBuilder = new DroppyMenuPopup.Builder(this, view);
         MapPopupItem item1 = new MapPopupItem(getString(R.string.popup_edit_name),
                 R.drawable.ic_edit_name,
                 DroppyMapMenuItem.ID_EDIT_NAME);
@@ -285,18 +279,22 @@ public class MainActivity extends AppCompatActivity
         droppyMenu.show();
     }
 
-    private EditMapNameDialog editMapNameDialog;
-
     @Override
     public void call(View v, int id) {
         switch (id) {
             case DroppyMapMenuItem.ID_EDIT_NAME: {
-                onEditMapNameClicked();
+                dialogs.showEditMapNameDialog(popupMapItem.mapName, new Dialogs.OnNameSetCallback() {
+                    @Override
+                    public void onNameSet(String newName) {
+                        popupMapItem.mapName = newName;
+                        prepareMapsRecyclerView();
+                    }
+                });
                 Log.i("Pop", "ID_EDIT_NAME " + popupMapItem.mapName);
                 break;
             }
             case DroppyMapMenuItem.ID_EDIT_FIELDS: {
-                showFieldsDialog(popupMapItem.mapName);
+                dialogs.showFieldsDialog(popupMapItem.mapName);
                 Log.i("Pop", "ID_EDIT_FIELDS " + popupMapItem.mapName);
                 break;
             }
@@ -310,72 +308,9 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private void onEditMapNameClicked() {
-        editMapNameDialog = new EditMapNameDialog(mContext, new View.OnClickListener() {
-            public void onClick(View v) {
-                if (v.getId() == R.id.btn_negative) {
-                    editMapNameDialog.dismiss();
-                } else if (v.getId() == R.id.btn_positive) {
-                    editMapNameDialog.dismiss();
-                    String oldName = popupMapItem.mapName;
-                    String newName = v.getTag().toString();
-                    String currentFields = AppPrefs.getFields(mContext, oldName);
-                    AppPrefs.setFields(mContext, newName, currentFields);
-                    AppPrefs.setFields(mContext, oldName, null);
-                    boolean isChecked = AppPrefs.getMap(mContext) != null &&
-                            AppPrefs.getMap(mContext).equals(oldName);
-                    ModelUtils.renameMap(mContext, oldName, newName);
-                    if (isChecked) {
-                        AppPrefs.setMap(mContext, newName);
-                    }
-                    popupMapItem.mapName = newName;
-                    prepareMapsRecyclerView();
-                }
-            }
-        });
-        editMapNameDialog.draw(popupMapItem.mapName,
-                R.string.title_edit_map_name,
-                android.R.string.ok,
-                android.R.string.cancel);
-        editMapNameDialog.show();
-    }
-
-    private void showFieldsDialog(final String mapName) {
-        fieldsDialog = new FieldsDialog(mContext, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (v.getId() == R.id.btn_negative) {
-                    fieldsDialog.dismiss();
-                } else if (v.getId() == R.id.btn_positive) {
-                    fieldsDialog.dismiss();
-                    String fields = v.getTag().toString();
-                    AppPrefs.setFields(mContext, mapName, fields);
-                }
-            }
-        });
-        fieldsDialog.draw(ModelUtils.getFields(mContext, mapName),
-                mapName,
-                R.string.title_choose_fields,
-                android.R.string.ok,
-                android.R.string.cancel);
-        fieldsDialog.show();
-    }
-
-    public void setActionbarTitle(int titleResId) {
-        setActionbarTitle(getString(titleResId));
-    }
-
-    public void setActionbarTitle(String title) {
-        if (getSupportActionBar() != null) {
-            SpannableString spannableString = new SpannableString(title);
-            spannableString.setSpan(new com.openDC.loclookup.view.TypefaceSpan(this,
-                            FontUtils.CustomFont.ARABIA_REGULAR.getFontName()),
-                    0, spannableString.length(),
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            getSupportActionBar().setTitle(spannableString);
-        }
-    }
-
+    /**
+     * Updates welcome message visibility, show message is maps list is empty, hide otherwise
+     */
     private void refreshWelcomeMessage() {
         findViewById(R.id.txt_welcome).setVisibility(mapsAdapter == null || mapsAdapter.empty()
                 ? View.VISIBLE

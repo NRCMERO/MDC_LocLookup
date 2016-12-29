@@ -55,12 +55,14 @@ public class LocationActivity extends AppCompatActivity implements
     private GoogleApiClient mGoogleApiClient;
     private Location mLocation;
     private FieldsDialog fieldsDialog;
+    private Dialogs dialogs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
         initGoogleApiClient();
+        dialogs = new Dialogs(mContext);
     }
 
     @Override
@@ -70,7 +72,7 @@ public class LocationActivity extends AppCompatActivity implements
     }
 
     /**
-     * Check the calling package and the gps availability before requesting gps location updates
+     * Checks the calling package and the gps availability before requesting gps location updates
      */
     private void checkAndStart() {
         if (!checkCallingPackage()) {
@@ -80,19 +82,19 @@ public class LocationActivity extends AppCompatActivity implements
     }
 
     /**
-     * Check whether the gps is enabled
+     * Checks whether the gps is enabled
      * show a dialog telling the user to turn the gps on if it was turned off
      */
     private void checkAndConnect() {
         if (LocationUtils.isLocationEnabled(mContext)) {
             mGoogleApiClient.connect();
         } else {
-            Dialogs.showGpsNeededDialog(mContext, this);
+            dialogs.showGpsNeededDialog(this);
         }
     }
 
     /**
-     * Check whether the calling package is white-listed
+     * Checks whether the calling package is white-listed
      * return to the caller if not
      *
      * @return whether calling package is authorized to use this tool
@@ -123,7 +125,7 @@ public class LocationActivity extends AppCompatActivity implements
     }
 
     /**
-     * Initialize Google Api Client
+     * Initializes Google Api Client
      */
     private void initGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(mContext)
@@ -141,7 +143,7 @@ public class LocationActivity extends AppCompatActivity implements
     }
 
     /**
-     * Check and show permission request dialog if gps permission is still needed
+     * Checks and show permission request dialog if gps permission is still needed
      *
      * @return whether gps permission is granted
      */
@@ -156,7 +158,7 @@ public class LocationActivity extends AppCompatActivity implements
     }
 
     /**
-     * Check if the gps permission has been granted by the user
+     * Checks if the gps permission has been granted by the user
      *
      * @return whether gps permission is granted
      */
@@ -166,7 +168,7 @@ public class LocationActivity extends AppCompatActivity implements
     }
 
     /**
-     * Start fetching user's location
+     * Starts fetching user's location
      */
     private void startLocationUpdates() {
         if (ActivityCompat.checkSelfPermission(mContext, LOCATION_PERMISSION)
@@ -192,7 +194,7 @@ public class LocationActivity extends AppCompatActivity implements
     }
 
     /**
-     * Look for the location in the map areas
+     * Looks for the location in the map areas
      * Returns the result to the caller application
      *
      * @param location the location to look for

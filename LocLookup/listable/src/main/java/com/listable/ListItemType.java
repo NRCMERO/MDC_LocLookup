@@ -1,7 +1,5 @@
 package com.listable;
 
-import android.util.SparseArray;
-
 public class ListItemType {
     public static int type;
 
@@ -9,11 +7,11 @@ public class ListItemType {
     public int layoutResId;
     public int itemViewType;
 
-    public ListItemType(Class<?> viewHolderClass, int layoutResId, SparseArray<ListItemType> typeItemMap) {
+    public ListItemType(Class<?> viewHolderClass, int layoutResId) {
         this.viewHolderClass = viewHolderClass;
         this.layoutResId = layoutResId;
         this.itemViewType = type++;
-        typeItemMap.put(itemViewType, this);
+        ItemsCollection.put(itemViewType, this);
     }
 
     @Override

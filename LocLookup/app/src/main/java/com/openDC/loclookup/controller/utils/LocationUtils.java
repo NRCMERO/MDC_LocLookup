@@ -5,6 +5,12 @@ import android.os.Build;
 import android.provider.Settings;
 
 public class LocationUtils {
+    /**
+     * Checks if location provider is enabled
+     *
+     * @param context the context that will be used to check
+     * @return true if location provider is enabled
+     */
     public static boolean isLocationEnabled(Context context) {
         int locationMode;
         String locationProviders;

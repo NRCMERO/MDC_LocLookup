@@ -66,6 +66,16 @@ public class ExtractionUtils {
         return false;
     }
 
+    /**
+     * Validates the selected map file if contains the requires types
+     *
+     * @param filePath the full map file path
+     * @return the code of the result
+     * 0 if file does not exists
+     * 1 if contains all the required files
+     * 2 if one or more required files are missing
+     * 3 if there were two or more files of the same extension
+     */
     public static int validate(String filePath) {
         File file = new File(filePath);
         if (!file.exists()) {
