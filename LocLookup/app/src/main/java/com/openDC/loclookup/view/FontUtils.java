@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class FontUtils {
     public enum CustomFont {
-        ARABIA_REGULAR("Arabia Weather Regular.ttf");
+        CAIRO("Cairo-Regular.ttf");
 
         private String mFontName;
 
