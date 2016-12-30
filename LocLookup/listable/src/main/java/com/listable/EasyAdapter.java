@@ -20,7 +20,7 @@ public class EasyAdapter extends RecyclerArrayAdapter<ListItem, BasicViewHolder>
 
     @Override
     public BasicViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ListItemType listItemType = ItemsCollection.getItemType(viewType);
+        ListItemType listItemType = ListItemsPool.getItemType(viewType);
         View view = inflater.inflate(listItemType.layoutResId, parent, false);
         try {
             Class<?>[] types = new Class[]{View.class, OnItemClickListener.OnItemClickCallback.class};

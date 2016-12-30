@@ -17,6 +17,8 @@
     <string name="toast.zip_file_duplicate_files">The selected file contains multiple files of the same extension</string>
 
     <string name="msg.enable_gps">Your GPS seems to be disabled, do you want to enable it?</string>
+    <string name="msg.location_outside">Location Outside Mapped Area</string>
+
     <string name="hint.map_name">Map name</string>
     <string name="title.edit_map_name">Edit Map Name</string>
     <string name="title.enter_map_name">Enter Map Name</string>

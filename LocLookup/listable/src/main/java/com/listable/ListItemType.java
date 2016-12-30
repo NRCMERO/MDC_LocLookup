@@ -11,7 +11,7 @@ public class ListItemType {
         this.viewHolderClass = viewHolderClass;
         this.layoutResId = layoutResId;
         this.itemViewType = type++;
-        ItemsCollection.put(itemViewType, this);
+        ListItemsPool.put(itemViewType, this);
     }
 
     @Override

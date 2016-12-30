@@ -227,18 +227,18 @@ public class LocationActivity extends AppCompatActivity implements
         }
         String[] address = ShapeFileUtils.getLocationAddress(shapeFile, location);
         if (address.length == 0) {
-            Toast.makeText(mContext, getString(R.string.toast_location_outside), Toast.LENGTH_LONG).show();
-            returnResultToCaller(Activity.RESULT_CANCELED, RESULT_EMPTY);
+            String outsideMessage = getString(R.string.msg_location_outside);
+            returnResultToCaller(Activity.RESULT_OK, outsideMessage);
+            return;
+        }
+        ModelUtils.fixRecords(address);
+        String fields = AppPrefs.getFields(mContext, selectedMap);
+        if (fields == null || fields.isEmpty()) {
+            showFieldsDialog(selectedMap);
         } else {
-            ModelUtils.fixRecords(address);
-            String fields = AppPrefs.getFields(mContext, selectedMap);
-            if (fields == null || fields.isEmpty()) {
-                showFieldsDialog(selectedMap);
-            } else {
-                List<String> selectedFieldKeys = Arrays.asList(fields.split("[,]"));
-                String result = ModelUtils.getLocationName(selectedFieldKeys, shapeFile.getDBF_field(), address);
-                returnResultToCaller(Activity.RESULT_OK, result);
-            }
+            List<String> selectedFieldKeys = Arrays.asList(fields.split("[,]"));
+            String result = ModelUtils.getLocationName(selectedFieldKeys, shapeFile.getDBF_field(), address);
+            returnResultToCaller(Activity.RESULT_OK, result);
         }
     }
 

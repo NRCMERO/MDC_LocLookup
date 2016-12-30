@@ -14,6 +14,7 @@
     <string name="toast.zip_file_duplicate_files">الملف الذي قمت باختياره يحتوي على أكثر من ملف بنفس الامتداد</string>
 
     <string name="msg.enable_gps">يبدو أن الـ GPS لديك معطل. هل تود تشغيله؟</string>
+
     <string name="hint.map_name">اسم الخارطة</string>
     <string name="title.edit_map_name">تعديل اسم الخارطة</string>
     <string name="title.enter_map_name">أدخل اسم الخارطة</string>

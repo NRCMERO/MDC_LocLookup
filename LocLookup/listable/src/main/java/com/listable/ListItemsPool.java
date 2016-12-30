@@ -2,7 +2,7 @@ package com.listable;
 
 import android.util.SparseArray;
 
-public class ItemsCollection {
+public class ListItemsPool {
     private static final SparseArray<ListItemType> sTypeItemMap = new SparseArray<>();
 
     public static ListItemType getItemType(int type) {
