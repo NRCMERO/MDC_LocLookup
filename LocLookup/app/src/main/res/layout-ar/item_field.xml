@@ -11,6 +11,13 @@
               android:paddingRight="@dimen/margin16"
               android:paddingTop="@dimen/margin8">
 
+    <ImageView
+        android:id="@+id/img_tick"
+        android:layout_width="@dimen/margin30"
+        android:layout_height="@dimen/margin30"
+        android:layout_marginRight="@dimen/margin10"
+        android:src="@drawable/ic_tick_accent"/>
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -24,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin4"
-            android:gravity="left"
+            android:gravity="right"
             android:textColor="@color/grayText"
             android:textSize="@dimen/font_medium"/>
 
@@ -32,15 +39,8 @@
             android:id="@+id/txt_field_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="left"
+            android:gravity="right"
             android:textColor="@android:color/black"
             android:textSize="@dimen/font_medium_plus"/>
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/img_tick"
-        android:layout_width="@dimen/margin30"
-        android:layout_height="@dimen/margin30"
-        android:layout_marginLeft="@dimen/margin10"
-        android:src="@drawable/ic_tick_accent"/>
 </LinearLayout>
