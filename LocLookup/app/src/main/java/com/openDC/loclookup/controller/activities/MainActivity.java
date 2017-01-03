@@ -118,11 +118,11 @@ public class MainActivity extends BaseActivity implements
     }
 
     /**
-     * Extracts the picked file to maps directory
+     * Adds a new map to the list
      *
-     * @param mapName the name of the map to be extracted
+     * @param mapName the name of the map to be added
      */
-    private void extract(String mapName) {
+    private void add(String mapName) {
         if (selectedFilePath == null || selectedFilePath.isEmpty()) {
             return;
         }
@@ -132,6 +132,12 @@ public class MainActivity extends BaseActivity implements
         }
         int preCount = ModelUtils.getAvailableMaps(mContext).size();
         ExtractionUtils.extract(selectedFilePath, mapsDir.getPath(), mapName);
+        boolean isValid = ModelUtils.validate(mContext, mapName);
+        if (!isValid) {
+            ModelUtils.deleteMap(mContext, mapName);
+            Toast.makeText(mContext, R.string.toast_zip_file_invalid_shape_files, Toast.LENGTH_LONG).show();
+            return;
+        }
         int postCount = ModelUtils.getAvailableMaps(mContext).size();
         if (postCount > preCount) {
             AppPrefs.setMap(mContext, mapName);
@@ -155,34 +161,38 @@ public class MainActivity extends BaseActivity implements
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == FILE_BROWSER_REQUEST_CODE && resultCode == RESULT_OK) {
-            String filePath = data.getStringExtra(FilePickerActivity.RESULT_FILE_PATH);
-            if (filePath.endsWith(".zip")) {
-                selectedFilePath = filePath;
-                int filesResultCode = ExtractionUtils.validate(selectedFilePath);
-                switch (filesResultCode) {
-                    case ExtractionUtils.RESULT_OK: {
-                        dialogs.showNameSettingDialog(StringUtils.getBaseName(filePath), new Dialogs.OnNameSetCallback() {
-                            @Override
-                            public void onNameSet(String newName) {
-                                extract(newName);
-                            }
-                        });
-                        break;
+        boolean picked = requestCode == FILE_BROWSER_REQUEST_CODE && resultCode == RESULT_OK;
+        if (!picked) {
+            return;
+        }
+        String filePath = data.getStringExtra(FilePickerActivity.RESULT_FILE_PATH);
+        if (!filePath.endsWith(".zip")) {
+            Toast.makeText(mContext, R.string.toast_zip_file_not_found, Toast.LENGTH_LONG).show();
+            return;
+        }
+        selectedFilePath = filePath;
+        int filesResultCode = ExtractionUtils.validate(selectedFilePath);
+        switch (filesResultCode) {
+            case ExtractionUtils.RESULT_OK: {
+                dialogs.showNameSettingDialog(StringUtils.getBaseName(filePath), new Dialogs.OnNameSetCallback() {
+                    @Override
+                    public void onNameSet(String newName) {
+                        add(newName);
                     }
-                    case ExtractionUtils.RESULT_FILE_NOT_EXIST: {
-                        Toast.makeText(mContext, R.string.toast_zip_file_not_found, Toast.LENGTH_LONG).show();
-                        break;
-                    }
-                    case ExtractionUtils.RESULT_MISSING_FILES: {
-                        Toast.makeText(mContext, R.string.toast_zip_file_missing_files, Toast.LENGTH_LONG).show();
-                        break;
-                    }
-                    case ExtractionUtils.RESULT_TOO_MANY_FILES: {
-                        Toast.makeText(mContext, R.string.toast_zip_file_duplicate_files, Toast.LENGTH_LONG).show();
-                        break;
-                    }
-                }
+                });
+                break;
+            }
+            case ExtractionUtils.RESULT_FILE_NOT_EXIST: {
+                Toast.makeText(mContext, R.string.toast_zip_file_not_found, Toast.LENGTH_LONG).show();
+                break;
+            }
+            case ExtractionUtils.RESULT_MISSING_FILES: {
+                Toast.makeText(mContext, R.string.toast_zip_file_missing_files, Toast.LENGTH_LONG).show();
+                break;
+            }
+            case ExtractionUtils.RESULT_TOO_MANY_FILES: {
+                Toast.makeText(mContext, R.string.toast_zip_file_duplicate_files, Toast.LENGTH_LONG).show();
+                break;
             }
         }
     }

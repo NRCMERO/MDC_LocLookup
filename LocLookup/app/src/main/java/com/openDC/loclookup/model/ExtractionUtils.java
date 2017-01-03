@@ -17,6 +17,14 @@ public class ExtractionUtils {
     public static final int RESULT_MISSING_FILES = 2;
     public static final int RESULT_TOO_MANY_FILES = 3;
 
+    /**
+     * Extracts the specified map .zip file to the specified location
+     *
+     * @param filePath the path of the file to be extracted
+     * @param mapsDir  the directory where the file will be extracted
+     * @param mapName  the name of the map to be extracted
+     * @return true if extraction succeeded
+     */
     public static boolean extract(String filePath, String mapsDir, String mapName) {
         String targetDirectory = mapsDir + File.separator + mapName;
         File file = new File(filePath);
@@ -74,7 +82,7 @@ public class ExtractionUtils {
      * 0 if file does not exists
      * 1 if contains all the required files
      * 2 if one or more required files are missing
-     * 3 if there were two or more files of the same extension
+     * 3 if there were two or more files having the same extension
      */
     public static int validate(String filePath) {
         File file = new File(filePath);

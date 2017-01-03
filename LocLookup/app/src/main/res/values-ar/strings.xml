@@ -13,6 +13,7 @@
     <string name="toast.zip_file_missing_files">بعض الملفات غير موجودة! يجب أن تتوفر الامتدادات *.shp, *.shx, *.dbf</string>
     <string name="toast.zip_file_duplicate_files">الملف الذي قمت باختياره يحتوي على أكثر من ملف بنفس الامتداد</string>
 
+    <string name="toast.zip_file_invalid_shape_files">خطأ خلال قراءة الملفات. يرجى تنزيل الملفات من مصدر مختلف</string>
     <string name="msg.enable_gps">يبدو أن الـ GPS لديك معطل. هل تود تشغيله؟</string>
 
     <string name="hint.map_name">اسم الخارطة</string>

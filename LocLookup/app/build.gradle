@@ -1,8 +1,6 @@
 apply plugin: 'com.android.application'
 
 android {
-    signingConfigs {
-    }
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
@@ -14,15 +12,10 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled true
+            debuggable true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            debuggable true
         }
-        debug {
-            debuggable true
-        }
-    }
-    productFlavors {
     }
 }
 
@@ -39,7 +32,6 @@ dependencies {
     compile project(':popup')
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.google.android.gms:play-services-location:10.0.1'
-    compile 'com.google.android.gms:play-services-maps:10.0.1'
     compile 'com.pnikosis:materialish-progress:1.7'
     compile 'com.nbsp:library:1.1'
 }

@@ -24,10 +24,8 @@ public class BaseActivity extends AppCompatActivity {
     public void setActionbarTitle(String title) {
         if (getSupportActionBar() != null) {
             SpannableString spannableString = new SpannableString(title);
-            spannableString.setSpan(new com.openDC.loclookup.view.TypefaceSpan(this,
-                            FontUtils.CustomFont.CAIRO.getFontName()),
-                    0, spannableString.length(),
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            Object obj = new com.openDC.loclookup.view.TypefaceSpan(this, FontUtils.CustomFont.CAIRO.getFontName());
+            spannableString.setSpan(obj, 0, spannableString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             getSupportActionBar().setTitle(spannableString);
         }
     }

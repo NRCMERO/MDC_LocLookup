@@ -30,80 +30,6 @@ public class ModelUtils {
     public static final String EXT_SHP = "shp";
 
     /**
-     * Copy map shape files from the assets to the internal storage
-     *
-     * @param context the context which will be needed to get the assets
-     * @param mapName the name of the map which files will be copied
-     */
-    public static void copyMapFiles(Context context, String mapName) {
-        AssetManager assetManager = context.getAssets();
-        String assetsMapDirectory = DIR_MAPS + File.separator + mapName;
-        File mapsDir = context.getExternalFilesDir(DIR_MAPS);
-        if (mapsDir == null) {
-            return;
-        }
-        String baseMapsDir = mapsDir.getPath();
-        File mapDir = new File(baseMapsDir + File.separator + mapName);
-        mapDir.mkdir();
-        String[] files = null;
-        try {
-            files = assetManager.list(assetsMapDirectory);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if (files == null) {
-            return;
-        }
-        List<String> existingFileNames = ModelUtils.getFileNames(context, mapName);
-        for (String filename : files) {
-            if (existingFileNames.contains(filename)) {
-                Log.i(TAG, "Already exists: " + filename);
-                continue;
-            }
-            InputStream in = null;
-            OutputStream out = null;
-            try {
-                in = assetManager.open(assetsMapDirectory + File.separator + filename);
-                File outFile = new File(mapDir, filename);
-                out = new FileOutputStream(outFile);
-                copyFile(in, out);
-                Log.i(TAG, "Copied: " + filename);
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                if (in != null) {
-                    try {
-                        in.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-                if (out != null) {
-                    try {
-                        out.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-     * Copy a file from input to output stream
-     *
-     * @param in  the input stream to copy from
-     * @param out the output stream to copy to
-     */
-    private static void copyFile(InputStream in, OutputStream out) throws IOException {
-        byte[] buffer = new byte[1024];
-        int read;
-        while ((read = in.read(buffer)) != -1) {
-            out.write(buffer, 0, read);
-        }
-    }
-
-    /**
      * Get the names of the existing map files
      *
      * @param context the context that will be used to access the storage
@@ -217,7 +143,7 @@ public class ModelUtils {
                 record[i] = new String(record[i].getBytes("ISO-8859-1"), "UTF-8");
                 record[i] = record[i].trim().replace("\n", " ");
             } catch (Exception e) {
-                e.printStackTrace();
+                Log.e("Encoding", "Couldn't encode field: " + record[i]);
             }
         }
     }
@@ -280,6 +206,27 @@ public class ModelUtils {
     }
 
     /**
+     * Validates extracted map files
+     *
+     * @param context the context tht will be used to read map file
+     * @param mapName the name of the map to fetch its fields
+     * @return the field items of a random area in the given map
+     */
+    public static boolean validate(Context context, String mapName) {
+        File mapsDir = context.getExternalFilesDir(ModelUtils.DIR_MAPS);
+        String mapPath = mapsDir.getPath() + File.separator + mapName;
+        ShapeFile shapeFile;
+        try {
+            shapeFile = new ShapeFile(mapPath, mapName);
+            shapeFile.READ();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
      * Changes the name of the given map (oldName) to a new one
      * All sub-files will be renamed to the new name as well
      *
@@ -304,5 +251,79 @@ public class ModelUtils {
             result &= subFile.renameTo(newSubFile);
         }
         return result;
+    }
+
+    /**
+     * Copy map shape files from the assets to the internal storage
+     *
+     * @param context the context which will be needed to get the assets
+     * @param mapName the name of the map which files will be copied
+     */
+    public static void copyMapFiles(Context context, String mapName) {
+        AssetManager assetManager = context.getAssets();
+        String assetsMapDirectory = DIR_MAPS + File.separator + mapName;
+        File mapsDir = context.getExternalFilesDir(DIR_MAPS);
+        if (mapsDir == null) {
+            return;
+        }
+        String baseMapsDir = mapsDir.getPath();
+        File mapDir = new File(baseMapsDir + File.separator + mapName);
+        mapDir.mkdir();
+        String[] files = null;
+        try {
+            files = assetManager.list(assetsMapDirectory);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (files == null) {
+            return;
+        }
+        List<String> existingFileNames = ModelUtils.getFileNames(context, mapName);
+        for (String filename : files) {
+            if (existingFileNames.contains(filename)) {
+                Log.i(TAG, "Already exists: " + filename);
+                continue;
+            }
+            InputStream in = null;
+            OutputStream out = null;
+            try {
+                in = assetManager.open(assetsMapDirectory + File.separator + filename);
+                File outFile = new File(mapDir, filename);
+                out = new FileOutputStream(outFile);
+                copyFile(in, out);
+                Log.i(TAG, "Copied: " + filename);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (in != null) {
+                    try {
+                        in.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (out != null) {
+                    try {
+                        out.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Copy a file from input to output stream
+     *
+     * @param in  the input stream to copy from
+     * @param out the output stream to copy to
+     */
+    private static void copyFile(InputStream in, OutputStream out) throws IOException {
+        byte[] buffer = new byte[1024];
+        int read;
+        while ((read = in.read(buffer)) != -1) {
+            out.write(buffer, 0, read);
+        }
     }
 }
