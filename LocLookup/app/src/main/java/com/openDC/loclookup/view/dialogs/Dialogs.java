@@ -12,7 +12,11 @@ import com.openDC.loclookup.controller.interfaces.ResultCallback;
 import com.openDC.loclookup.controller.activities.LocationActivity;
 import com.openDC.loclookup.model.AppPrefs;
 import com.openDC.loclookup.model.ModelUtils;
+import com.openDC.loclookup.model.vo.FieldItem;
 
+import java.util.List;
+
+import diewald_shapeFile.shapeFile.ShapeFile;
 import loclookup.opendc.com.loclookup.R;
 
 public class Dialogs {
@@ -131,6 +135,28 @@ public class Dialogs {
      * @param mapName the name of the map that's fields will be shown
      */
     public void showFieldsDialog(final String mapName) {
+        showFieldsDialog(mapName, ModelUtils.getFields(mContext, mapName));
+    }
+
+    /**
+     * Shows the dialog of available fields list
+     * Only the values of the selected fields will be returned to the caller app
+     *
+     * @param mapName   the name of the map that's fields will be shown
+     * @param shapeFile the shape file of the map that's fields will be shown
+     */
+    public void showFieldsDialog(final String mapName, final ShapeFile shapeFile) {
+        showFieldsDialog(mapName, ModelUtils.getFields(shapeFile));
+    }
+
+    /**
+     * Shows the dialog of available fields list
+     * Only the values of the selected fields will be returned to the caller app
+     *
+     * @param mapName the name of the map that's fields will be shown
+     * @param fields  the fields that will be listed in the dialog
+     */
+    public void showFieldsDialog(final String mapName, List<FieldItem> fields) {
         fieldsDialog = new FieldsDialog(mContext, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,7 +169,7 @@ public class Dialogs {
                 }
             }
         });
-        fieldsDialog.draw(ModelUtils.getFields(mContext, mapName),
+        fieldsDialog.draw(fields,
                 mapName,
                 R.string.title_choose_fields,
                 android.R.string.ok,

@@ -206,23 +206,45 @@ public class ModelUtils {
     }
 
     /**
-     * Validates extracted map files
+     * Fetches field items for a random area having the shape file
      *
-     * @param context the context tht will be used to read map file
-     * @param mapName the name of the map to fetch its fields
+     * @param shapeFile the shape file to get fields from
      * @return the field items of a random area in the given map
      */
-    public static boolean validate(Context context, String mapName) {
+    public static List<FieldItem> getFields(ShapeFile shapeFile) {
+        int randomSample = new Random().nextInt(shapeFile.getDBF_record().length);
+        String[] record = shapeFile.getDBF_record()[randomSample];
+        if (shapeFile.getDBF_field().length != record.length) {
+            return new ArrayList<>();
+        }
+        ModelUtils.fixRecords(record);
+        List<FieldItem> result = new ArrayList<>();
+        for (int i = 0; i < shapeFile.getDBF_field().length; i++) {
+            DBF_Field field = shapeFile.getDBF_field()[i];
+            FieldItem fieldItem = new FieldItem(field.getName(), record[i]);
+            result.add(fieldItem);
+        }
+        return result;
+    }
+
+    /**
+     * Gets the shape file for a specified map
+     *
+     * @param context the context tht will be used to read map file
+     * @param mapName the name of the map to fetch its shape file
+     * @return the shape file for the specified map, or null if failed
+     */
+    public static ShapeFile readShapeFile(Context context, String mapName) {
         File mapsDir = context.getExternalFilesDir(ModelUtils.DIR_MAPS);
         String mapPath = mapsDir.getPath() + File.separator + mapName;
         ShapeFile shapeFile;
         try {
             shapeFile = new ShapeFile(mapPath, mapName);
             shapeFile.READ();
-            return true;
+            return shapeFile;
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            return null;
         }
     }
 

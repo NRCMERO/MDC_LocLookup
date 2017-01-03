@@ -38,6 +38,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import diewald_shapeFile.shapeFile.ShapeFile;
 import loclookup.opendc.com.loclookup.R;
 
 public class MainActivity extends BaseActivity implements
@@ -132,8 +133,8 @@ public class MainActivity extends BaseActivity implements
         }
         int preCount = ModelUtils.getAvailableMaps(mContext).size();
         ExtractionUtils.extract(selectedFilePath, mapsDir.getPath(), mapName);
-        boolean isValid = ModelUtils.validate(mContext, mapName);
-        if (!isValid) {
+        ShapeFile shapeFile = ModelUtils.readShapeFile(mContext, mapName);
+        if (shapeFile == null) {
             ModelUtils.deleteMap(mContext, mapName);
             Toast.makeText(mContext, R.string.toast_zip_file_invalid_shape_files, Toast.LENGTH_LONG).show();
             return;
@@ -141,7 +142,7 @@ public class MainActivity extends BaseActivity implements
         int postCount = ModelUtils.getAvailableMaps(mContext).size();
         if (postCount > preCount) {
             AppPrefs.setMap(mContext, mapName);
-            dialogs.showFieldsDialog(mapName);
+            dialogs.showFieldsDialog(mapName, shapeFile);
             Toast.makeText(mContext, R.string.toast_map_added, Toast.LENGTH_LONG).show();
             prepareMapsRecyclerView();
         }

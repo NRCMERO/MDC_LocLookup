@@ -15,7 +15,7 @@
     <string name="toast.zip_file_not_found">File not found!</string>
     <string name="toast.zip_file_missing_files">Some files are missing! Must contain *.shp, *.shx, and *.dbf</string>
     <string name="toast.zip_file_duplicate_files">The selected file contains multiple files of the same extension</string>
-    <string name="toast.zip_file_invalid_shape_files">Error reading files. Please download files from different source</string>
+    <string name="toast.zip_file_invalid_shape_files">Error reading files. Please download files from a different source</string>
 
     <string name="msg.enable_gps">Your GPS seems to be disabled, do you want to enable it?</string>
     <string name="msg.location_outside">Location Outside Mapped Area</string>
