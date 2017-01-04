@@ -26,7 +26,8 @@ A single click on a map item will select that map, a ✓ will appear on the sele
 #### Picking a Map File
 
 When you click on the add icon mentioned before, a file browser will opened and you can go and select the .zip file that contains map shape files.
-A valid .zip file has to contain one, and only one file of the following types: *.shp, *.shx, and *.dbf. Missing one of these files or finding any duplicate will lead to a non-acceptable selection. Having redundant files is ok, they will be simply ignored.
+
+A valid .zip file has to contain one, and only one file of each of the following types: *.shp, *.shx, and *.dbf. Missing one of these files or finding any duplicate will lead to a non-acceptable selection. Having redundant files is ok, they will be simply ignored.
 
 More about shape files: [Wikipedia](https://en.wikipedia.org/wiki/Shapefile)  
 Where they can be found: [Site #1](https://data.humdata.org/dataset)  
@@ -41,11 +42,11 @@ When shape files are validated, a dialog with a list of all available fields is 
 
 This project has been created using Android Studio IDE. For running this project, you'll need to install Android Studio and android SDK on your machine. It's completely free. You can directly go to their [official website](https://developer.android.com/studio/index.html) and find more details.
 
-A compiled apk can be found in 'apk' directory directly in the project main directory, so you can install it on your phone if you don't like to open the project in Android Studio.
+A compiled apk can be found in 'apk' directory, directly in the project main directory, so you can install it on your phone if you don't like to open the project in Android Studio.
 
 ### Supported Android Version
 
-You Android 4.2 or higher installed on your phone to be able to run the application.
+You need to have Android 4.2 or higher on your phone to be able to run the application.
 
 ### Dependencies
 
