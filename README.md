@@ -1,4 +1,4 @@
-This application works with your mobile data capture application like Kobo and [Mobenzi](https://www.mobenzi.com/). It will look up the name of the area where you are and return the name of that location to the mobile data capture application.
+This application works with your ODK or [Mobenzi](https://www.mobenzi.com/) mobile data capture application like Kobo. It will look up the name of the area where you are and return the name of that location to the mobile data capture application.
 
 ### How it works
 
