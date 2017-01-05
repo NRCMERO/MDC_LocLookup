@@ -59,6 +59,4 @@ Here's a list of the non-native dependencies that have been used in the project:
 
 ### Resources
 
-* [Icon](https://www.iconfinder.com/icons/299035/marker_icon)
-
-* [Font](https://github.com/Gue3bara/Cairo)
+* [Font: Cairo](https://github.com/Gue3bara/Cairo)
